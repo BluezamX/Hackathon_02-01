@@ -1,5 +1,6 @@
 package Main.Game.VisualPane;
 
+import Main.Util.Constants;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -19,7 +20,8 @@ public class UpdateHandler {
   }
 
   public void draw(Image image, int x, int y){
-    System.out.println(image.getHeight());
-    context.drawImage(image, x, y);
+    System.out.println(Constants.widthScale);
+    System.out.println(Constants.heightScale);
+    context.drawImage(image, (int) x / Constants.widthScale, (int) y / Constants.heightScale);
   }
 }

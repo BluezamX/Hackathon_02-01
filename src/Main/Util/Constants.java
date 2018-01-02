@@ -11,4 +11,6 @@ public class Constants {
   static final Rectangle2D resolution = Screen.getPrimary().getVisualBounds();
   public static final int width = (int)resolution.getWidth();
   public static final int height = (int)resolution.getHeight();
+  public static final float widthScale = (float) width / 1920;
+  public static final float heightScale = (float) height / 1080;
 }
