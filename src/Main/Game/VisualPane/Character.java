@@ -18,11 +18,11 @@ public class Character {
     this.y = 512;
   }
 
-  public Character(String path, VisualPane pane, int x, int y){
+  public Character(String path, VisualPane pane, int x){
     this.path = path;
     this.pane = pane;
     this.x = x;
-    this.y = y;
+    this.y = 512;
   }
 
   public String getPath() {

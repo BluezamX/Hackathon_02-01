@@ -1,6 +1,7 @@
 package Main.Game;
 
 import Main.Game.TextPane.TextPane;
+import Main.Game.VisualPane.Level;
 import Main.Game.VisualPane.VisualPane;
 import javafx.application.Platform;
 import javafx.scene.layout.BorderPane;
@@ -19,17 +20,20 @@ class ApplicationPane extends Pane {
   VisualPane visualPane;
   TextPane textPane;
   ArrayList<Character> characters = new ArrayList<>();
+  ArrayList<Level> levels = new ArrayList<>();
   String background;
   String foreground;
 
   ApplicationPane(){
     initialize();
+    setLevels();
+    setCharacters(0);
 
     this.setOnKeyPressed(event -> {
       switch (event.getCode()) {
         case UP:
           System.out.println("jaa");
-          characters.get(0).addX(5);
+          characters.get(0).addX(20);
           visualPane.drawBackground(background);
           for(Character character : characters){
             character.draw();
@@ -40,12 +44,12 @@ class ApplicationPane extends Pane {
 
         case DOWN:
           System.out.println("ne");
-          characters.get(0).addX(-5);
+          characters.get(0).addX(-15);
           visualPane.drawBackground(background);
           for(Character character : characters){
             character.draw();
           }
-          visualPane.drawImage(characters.get(0).getPath(), characters.get(0).x, characters.get(0).y);
+          visualPane.drawFlip(characters.get(0).getPath(), characters.get(0).x, characters.get(0).y);
           //visualPane.drawBackground(foreground);
           break;
 
@@ -59,6 +63,26 @@ class ApplicationPane extends Pane {
     characters.add(character);
   }
 
+  void loadLevel(int levelNumber){
+    Level level = levels.get(levelNumber);
+    background = level.getBackground();
+    foreground = level.getForeground();
+    characters = level.getCharacters();
+  }
+
+  void setLevels(){
+    ArrayList<Character> tempchars = new ArrayList<Character>();
+    tempchars.add(new Character("test.png", visualPane));
+    levels.add(new Level("testbackground.png", "testforeground.png", "cane", tempchars));
+  }
+
+  void setCharacters(int levelNumber) {
+    for (Character character : levels.get(levelNumber).getCharacters()){
+      character.draw();
+      characters.add(character);
+    }
+  }
+
   void initialize(){
     background = "testbackground.png";
     foreground = "testforeground.png";
@@ -69,7 +93,5 @@ class ApplicationPane extends Pane {
     root.setTop(canvas);
     root.setBottom(textPane);
     getChildren().add(root);
-
-    addCharacter(new Character("test.png", visualPane));
   }
 }

@@ -29,6 +29,11 @@ public class VisualPane extends Pane {
     context.drawImage(new Image((getClass().getResourceAsStream(path))), x * Constants.widthScale, y * Constants.heightScale, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
   }
 
+  public void drawFlip(String path, int x, int y){
+    Image image = new Image((getClass().getResourceAsStream(path)));
+    context.drawImage(new Image((getClass().getResourceAsStream(path))), x * Constants.widthScale, y * Constants.heightScale, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
+  }
+
   public void drawBackground(String path){
     Image image = new Image((getClass().getResourceAsStream(path)));
     context.drawImage(image, 0, 0, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
