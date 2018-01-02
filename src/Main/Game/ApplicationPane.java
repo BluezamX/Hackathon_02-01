@@ -14,5 +14,6 @@ public class ApplicationPane extends Pane {
   ApplicationPane(){
     this.tabs = new TabPane();
     getChildren().add(tabs);
+    // baguette
   }
 }
