@@ -8,7 +8,9 @@ import javafx.scene.Scene;
  */
 public class ApplicationScene extends Scene{
 
-  public ApplicationScene(){super(new ApplicationPane());
-  getRoot().requestFocus();
+
+  public ApplicationScene(){
+    super(new ApplicationPane());
+    getRoot().requestFocus();
   }
 }

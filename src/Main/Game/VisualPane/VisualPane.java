@@ -24,12 +24,18 @@ public class VisualPane extends Pane {
     //drawImage("test.png", 512, 256);
   }
 
-  public void drawImage(String path, int x, int y){
+  public void drawPath(String path, int x, int y){
     Image image = new Image((getClass().getResourceAsStream(path)));
     context.drawImage(new Image((getClass().getResourceAsStream(path))), x * Constants.widthScale, y * Constants.heightScale, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
   }
 
-  public void drawFlip(String path, int x, int y){
+    public void drawImage(Image image, int x, int y){
+        context.drawImage(image , x * Constants.widthScale, y * Constants.heightScale, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
+    }
+
+
+
+    public void drawFlip(String path, int x, int y){
     Image image = new Image((getClass().getResourceAsStream(path)));
     context.drawImage(new Image((getClass().getResourceAsStream(path))), x * Constants.widthScale, y * Constants.heightScale, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
   }

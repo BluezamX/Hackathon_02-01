@@ -1,39 +1,48 @@
 package Main.Game.VisualPane;
 
+import javafx.scene.image.Image;
+
 /**
  * Created by jaspe on 02/01/2018.
  *
  */
 public class Character {
 
-  private String path;
+  public Image image;
   private VisualPane pane;
   public int x;
   public int y;
 
   public Character(String path, VisualPane pane){
-    this.path = path;
+    image =  new Image((getClass().getResourceAsStream(path)));
     this.pane = pane;
     this.x = 0;
     this.y = 512;
   }
 
-  public Character(String path, VisualPane pane, int x){
-    this.path = path;
+  public Character(String path, VisualPane pane, int x , int y){
+    image =  new Image((getClass().getResourceAsStream(path)));
     this.pane = pane;
     this.x = x;
-    this.y = 512;
+    this.y = y;
   }
 
-  public String getPath() {
-    return path;
-  }
+
 
   public void addX(int amount) {
     this.x += amount;
   }
 
   public void draw(){
-    pane.drawImage(path, x, y);
+    pane.drawImage(image, x, y);
+  }
+
+  public boolean checkSpeakable(double x , double y){
+    if(image.getWidth() + this.x > x  && x > this.x ){
+        System.out.println("Je moeder");
+        return true;
+    }
+      System.out.println("sad");
+   return false;
   }
 }

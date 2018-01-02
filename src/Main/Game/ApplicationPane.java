@@ -30,7 +30,7 @@ class ApplicationPane extends Pane {
     setLevels();
     setCharacters(0);
 
-    this.setOnKeyPressed(event -> {
+    setOnKeyPressed(event -> {
       switch (event.getCode()) {
         case UP:
           System.out.println("jaa");
@@ -39,7 +39,7 @@ class ApplicationPane extends Pane {
           for(Character character : characters){
             character.draw();
           }
-          visualPane.drawImage("Lopen F" + walkCounter + ".png", characters.get(0).x, characters.get(0).y);
+          visualPane.drawPath("Lopen F" + walkCounter + ".png", characters.get(0).x, characters.get(0).y);
           //visualPane.drawBackground(foreground);
           break;
 
@@ -54,8 +54,17 @@ class ApplicationPane extends Pane {
           //visualPane.drawBackground(foreground);
           break;
 
-        case ESCAPE:
+          case ENTER:
+              System.out.println("EFNDJ");
+              for (int i = 1 ; i < characters.size() ; i++) {
+                  characters.get(i).checkSpeakable( characters.get(0).x , characters.get(0).x + characters.get(0).image.getWidth());
+              }
+              break;
+
+
+          case ESCAPE:
           Platform.exit();
+          break;
       }
     });
 
@@ -81,7 +90,8 @@ class ApplicationPane extends Pane {
 
   void setLevels(){
     ArrayList<Character> tempchars = new ArrayList<Character>();
-    tempchars.add(new Character("test.png", visualPane));
+    tempchars.add(new Character("test.png", visualPane, 0 , 512));
+    tempchars.add(new Character("sanic.png", visualPane, 1000 , 0));
     levels.add(new Level("testbackground.png", "testforeground.png", "cane", tempchars));
   }
 
@@ -95,6 +105,7 @@ class ApplicationPane extends Pane {
   void initialize(){
     background = "testbackground.png";
     foreground = "testforeground.png";
+
     Canvas canvas = new Canvas(Constants.width, (Constants.height * 6 / 8));
     this.visualPane = new VisualPane(canvas);
     this.textPane = new TextPane();
