@@ -27,17 +27,27 @@ class ApplicationPane extends Pane {
   private int walkCounter = 1;
   private boolean flip = false;
   private boolean reverse = false;
+  public int levelnummer = 0;
 
   ApplicationPane(){
-    initialize();
-    setLevels();
-    setCharacters(0);
-    loadLevel(0);
-    player.draw();
+      initialize();
+      setLevels();
+      setCharacters(0);
+      loadLevel(levelnummer);
+      player.draw();
 
     setOnKeyPressed(event -> {
       switch (event.getCode()) {
         case UP:
+            System.out.println(player.x);
+            System.out.println(Constants.width);
+          if(player.x > Constants.width)  {
+
+            levelnummer++;
+            levelnext();
+            player.x = 50 ;
+        }
+
           System.out.println(walkCounter);
           player.addX(20);
           visualPane.drawBackground(background);
@@ -63,7 +73,16 @@ class ApplicationPane extends Pane {
           break;
 
         case DOWN:
-          System.out.println("ne");
+            if(player.x < 0)  {
+                if(levelnummer == 0){
+                    break;
+
+                }
+                levelnummer--;
+                levelnext();
+                player.x = Constants.width ;
+            }
+
           player.addX(-15);
           visualPane.drawBackground(background);
           for(int i = 0; i < characters.size(); i++){
@@ -123,15 +142,18 @@ class ApplicationPane extends Pane {
 
   private void setLevels(){
     ArrayList<Character> tempchars = new ArrayList<>();
+      ArrayList<Character> Level2 = new ArrayList<>();
     ArrayList<String> text = new ArrayList<>();
     text.add("Yvan is een goede programmeur.");
     text.add("PRANKED");
     tempchars.add(new Character("test.png", visualPane, text, 1000, 200));
     levels.add(new Level("testbackground1.png", "testforeground.png", "cane", tempchars));
+    levels.add(new Level("testbackground.png", "testforeground.png", "cane", Level2));
+
   }
 
   private void setCharacters(int levelNumber) {
-    for (Character character : levels.get(levelNumber).getCharacters()){
+     for (Character character : levels.get(levelNumber).getCharacters()){
       character.draw();
       characters.add(character);
     }
@@ -150,5 +172,12 @@ class ApplicationPane extends Pane {
     getChildren().add(root);
 
     player = new Character("Staand.png", visualPane, null, 50, 300);
+  }
+
+  public void levelnext () {
+
+
+      loadLevel(levelnummer);
+      player.draw();
   }
 }
