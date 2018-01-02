@@ -23,6 +23,7 @@ class ApplicationPane extends Pane {
   ArrayList<Level> levels = new ArrayList<>();
   String background;
   String foreground;
+  int walkCounter;
 
   ApplicationPane(){
     initialize();
@@ -38,7 +39,7 @@ class ApplicationPane extends Pane {
           for(Character character : characters){
             character.draw();
           }
-          visualPane.drawImage(characters.get(0).getPath(), characters.get(0).x, characters.get(0).y);
+          visualPane.drawImage("Lopen F" + walkCounter + ".png", characters.get(0).x, characters.get(0).y);
           //visualPane.drawBackground(foreground);
           break;
 
@@ -49,12 +50,20 @@ class ApplicationPane extends Pane {
           for(Character character : characters){
             character.draw();
           }
-          visualPane.drawFlip(characters.get(0).getPath(), characters.get(0).x, characters.get(0).y);
+          visualPane.drawFlip("Lopen F" + walkCounter + ".png", characters.get(0).x, characters.get(0).y);
           //visualPane.drawBackground(foreground);
           break;
 
         case ESCAPE:
           Platform.exit();
+      }
+    });
+
+    this.setOnKeyReleased (event -> {
+      switch (event.getCode()) {
+        default:
+          
+          break;
       }
     });
   }
