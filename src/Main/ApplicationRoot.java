@@ -1,5 +1,6 @@
 package Main;
 
+import Main.Game.ApplicationScene;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -27,7 +28,7 @@ public class ApplicationRoot extends Application {
     stage.setFullScreen(true);
     stage.setResizable(true);
 
-    //scene = new ApplicationScene();
+    scene = new ApplicationScene();
 
     stage.setTitle("Hackathon Project Name");
     stage.setScene(scene);

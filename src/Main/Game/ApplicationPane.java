@@ -9,11 +9,7 @@ import javafx.scene.layout.Pane;
  */
 public class ApplicationPane extends Pane {
 
-  private final TabPane tabs;
-
   ApplicationPane(){
-    this.tabs = new TabPane();
-    getChildren().add(tabs);
-    // croissant
+
   }
 }
