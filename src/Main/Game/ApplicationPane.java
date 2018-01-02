@@ -2,6 +2,8 @@ package Main.Game;
 
 import Main.Game.TextPane.TextPane;
 import Main.Game.VisualPane.VisualPane;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import Main.Util.Constants;
 import javafx.scene.canvas.Canvas;
@@ -21,10 +23,24 @@ class ApplicationPane extends Pane {
     this.visualPane = new VisualPane(canvas);
     this.textPane = new TextPane();
     BorderPane root = new BorderPane();
-    root.setTop(visualPane);
+    root.setTop(canvas);
     root.setBottom(textPane);
+
+
     getChildren().add(root);
-    getChildren().add(visualPane);
-    getChildren().add(canvas);
+
+
+
+    this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+      @Override
+      public void handle(KeyEvent event) {
+        switch (event.getCode()) {
+          case UP:  System.out.println("jaa"); break;
+
+        }
+      }
+    });
+
+
   }
 }

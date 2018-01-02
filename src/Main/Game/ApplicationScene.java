@@ -7,5 +7,10 @@ import javafx.scene.Scene;
  *
  */
 public class ApplicationScene extends Scene{
-  public ApplicationScene(){super(new ApplicationPane());}
+
+  public ApplicationScene(){super(new ApplicationPane());
+  getRoot().requestFocus();
+  }
+
+
 }
