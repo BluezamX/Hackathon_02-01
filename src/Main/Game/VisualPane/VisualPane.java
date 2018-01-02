@@ -20,7 +20,7 @@ public class VisualPane extends Pane {
     context = canvas.getGraphicsContext2D();
     //context.drawImage(new Image(getClass().getResourceAsStream("testbackground.png")), 0, 0);
     //context.drawImage(new Image(getClass().getResourceAsStream("test.png")), 0, 0);
-    drawBackground("testbackground.png");
+    drawBackground("testbackground1.png");
     //drawImage("test.png", 512, 256);
   }
 
@@ -37,7 +37,7 @@ public class VisualPane extends Pane {
 
     public void drawFlip(String path, int x, int y){
     Image image = new Image((getClass().getResourceAsStream(path)));
-    context.drawImage(new Image((getClass().getResourceAsStream(path))), x * Constants.widthScale, y * Constants.heightScale, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
+    context.drawImage(new Image((getClass().getResourceAsStream(path))), x * Constants.widthScale + image.getWidth(), y * Constants.heightScale, -image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
   }
 
   public void drawBackground(String path){

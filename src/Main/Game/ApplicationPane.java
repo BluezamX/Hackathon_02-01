@@ -17,47 +17,63 @@ import java.util.*;
  */
 class ApplicationPane extends Pane {
 
-  VisualPane visualPane;
-  TextPane textPane;
-  ArrayList<Character> characters = new ArrayList<>();
-  ArrayList<Level> levels = new ArrayList<>();
-  String background;
-  String foreground;
-  int walkCounter;
+  private VisualPane visualPane;
+  private TextPane textPane;
+  private ArrayList<Character> characters = new ArrayList<>();
+  private Character player;
+  private ArrayList<Level> levels = new ArrayList<>();
+  private String background;
+  private String foreground;
+  private int walkCounter = 1;
+  private boolean flip = false;
 
   ApplicationPane(){
     initialize();
     setLevels();
     setCharacters(0);
+    loadLevel(0);
+    player.draw();
 
     setOnKeyPressed(event -> {
       switch (event.getCode()) {
         case UP:
           System.out.println("jaa");
-          characters.get(0).addX(20);
+          player.addX(20);
           visualPane.drawBackground(background);
-          for(Character character : characters){
-            character.draw();
+          for(int i = 0; i < characters.size(); i++){
+            characters.get(i).draw();
           }
-          visualPane.drawPath("Lopen F" + walkCounter + ".png", characters.get(0).x, characters.get(0).y);
+          visualPane.drawPath("Lopen F" + walkCounter + ".png", player.x, player.y);
+          walkCounter++;
+          if(walkCounter > 5){
+            walkCounter = 1;
+          }
+          flip = false;
           //visualPane.drawBackground(foreground);
           break;
 
         case DOWN:
           System.out.println("ne");
-          characters.get(0).addX(-15);
+          player.addX(-15);
           visualPane.drawBackground(background);
-          for(Character character : characters){
-            character.draw();
+          for(int i = 0; i < characters.size(); i++){
+            characters.get(i).draw();
           }
-          visualPane.drawFlip("Lopen F" + walkCounter + ".png", characters.get(0).x, characters.get(0).y);
+          visualPane.drawFlip("Lopen F" + walkCounter + ".png", player.x, player.y);
+          walkCounter++;
+          if(walkCounter > 5){
+            walkCounter = 1;
+          }
+          flip = true;
           //visualPane.drawBackground(foreground);
           break;
 
           case ENTER:
-              System.out.println("EFNDJ");
-              for (int i = 1 ; i < characters.size() ; i++) {
-                  characters.get(i).checkSpeakable( characters.get(0).x , characters.get(0).x + characters.get(0).image.getWidth());
+              System.out.println("Dit wordt redelijk hard geprint.");
+              for (Character character : characters) {
+                  if (character.x < player.x + player.image.getWidth() && player.x < character.x + character.image.getWidth()){
+                    System.out.println(character.speak());
+                  }
               }
               break;
 
@@ -69,41 +85,47 @@ class ApplicationPane extends Pane {
     });
 
     this.setOnKeyReleased (event -> {
-      switch (event.getCode()) {
-        default:
-          
-          break;
+
+      visualPane.drawBackground(background);
+      for(int i = 0; i < characters.size(); i++){
+        characters.get(i).draw();
       }
+      if (flip){
+        visualPane.drawFlip("Staand.png", player.x, player.y);
+      } else {
+        visualPane.drawPath("Staand.png", player.x, player.y);
+      }
+      walkCounter = 1;
+
     });
   }
 
-  public void addCharacter(Character character){
-    characters.add(character);
-  }
+//  public void addCharacter(Character character){
+//    characters.add(character);
+//  }
 
-  void loadLevel(int levelNumber){
+  private void loadLevel(int levelNumber){
     Level level = levels.get(levelNumber);
     background = level.getBackground();
     foreground = level.getForeground();
     characters = level.getCharacters();
   }
 
-  void setLevels(){
-    ArrayList<Character> tempchars = new ArrayList<Character>();
-    tempchars.add(new Character("test.png", visualPane, 0 , 512));
-    tempchars.add(new Character("sanic.png", visualPane, 1000 , 0));
-    levels.add(new Level("testbackground.png", "testforeground.png", "cane", tempchars));
+  private void setLevels(){
+    ArrayList<Character> tempchars = new ArrayList<>();
+    tempchars.add(new Character("test.png", visualPane, 1000, 200));
+    levels.add(new Level("testbackground1.png", "testforeground.png", "cane", tempchars));
   }
 
-  void setCharacters(int levelNumber) {
+  private void setCharacters(int levelNumber) {
     for (Character character : levels.get(levelNumber).getCharacters()){
       character.draw();
       characters.add(character);
     }
   }
 
-  void initialize(){
-    background = "testbackground.png";
+  private void initialize(){
+    background = "testbackground1.png";
     foreground = "testforeground.png";
 
     Canvas canvas = new Canvas(Constants.width, (Constants.height * 6 / 8));
@@ -113,5 +135,7 @@ class ApplicationPane extends Pane {
     root.setTop(canvas);
     root.setBottom(textPane);
     getChildren().add(root);
+
+    player = new Character("Staand.png", visualPane, 50, 400);
   }
 }

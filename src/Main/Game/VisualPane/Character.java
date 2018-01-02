@@ -17,7 +17,7 @@ public class Character {
     image =  new Image((getClass().getResourceAsStream(path)));
     this.pane = pane;
     this.x = 0;
-    this.y = 512;
+    this.y = 400;
   }
 
   public Character(String path, VisualPane pane, int x , int y){
@@ -26,8 +26,6 @@ public class Character {
     this.x = x;
     this.y = y;
   }
-
-
 
   public void addX(int amount) {
     this.x += amount;
@@ -45,4 +43,9 @@ public class Character {
       System.out.println("sad");
    return false;
   }
+
+  public String speak(){
+    return "Hallo Yvan";
+  }
+
 }

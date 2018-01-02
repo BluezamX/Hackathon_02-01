@@ -14,10 +14,10 @@ public class TextPane extends Pane {
 
   public TextPane(){
     TextArea area = new TextArea();
+    area.setStyle("-fx-font-size: 3em;");
     area.setEditable(false);
-    
-    area.setText("JEMOEDERISEENGROTEHOERMETEENDIKKENEUS yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-
+    area.setText("No Reception!\n" +
+        "By Jasper Wijnhoven, Yvan Bibollet-Ruche, Caia Leithuijser and Nicky van Oort.");
     area.setWrapText(true);
     area.setMinWidth(Constants.width);
     area.setMinHeight(Constants.height / 3);
