@@ -7,22 +7,33 @@ package Main.Game.VisualPane;
 public class Character {
 
   private String path;
+  private VisualPane pane;
   public int x;
   public int y;
 
-  Character(String path){
+  public Character(String path, VisualPane pane){
     this.path = path;
+    this.pane = pane;
     this.x = 0;
     this.y = 512;
   }
 
-  Character(String path, int x, int y){
+  public Character(String path, VisualPane pane, int x, int y){
     this.path = path;
+    this.pane = pane;
     this.x = x;
     this.y = y;
   }
 
   public String getPath() {
     return path;
+  }
+
+  public void addX(int amount) {
+    this.x += amount;
+  }
+
+  public void draw(){
+    pane.drawImage(path, x, y);
   }
 }

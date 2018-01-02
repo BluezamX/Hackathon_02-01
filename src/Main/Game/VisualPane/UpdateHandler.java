@@ -13,10 +13,6 @@ public class UpdateHandler {
 
   UpdateHandler(GraphicsContext context){
     this.context = context;
-
-    //drawBackground
-    draw(new Image(getClass().getResourceAsStream("testbackground.png")), 0, 0);
-    draw(new Image(getClass().getResourceAsStream("test.png")), 512, 256);
   }
 
   public void draw(Image image, int x, int y){
