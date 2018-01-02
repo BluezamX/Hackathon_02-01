@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Main/Game/VisualPane/Character.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java" afterPath="$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Util/Constants.java" afterPath="$PROJECT_DIR$/src/Main/Util/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java" afterPath="$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,8 +80,8 @@
       <file leaf-file-name="VisualPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="61" lean-forward="false" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+            <state relative-caret-position="336">
+              <caret line="26" column="84" lean-forward="false" selection-start-line="26" selection-start-column="84" selection-end-line="26" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UpdateHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="358">
+              <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,14 +101,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Characters.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java">
+      <file leaf-file-name="GraphicsContext.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/canvas/GraphicsContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="232">
+              <caret line="2659" column="5" lean-forward="true" selection-start-line="2659" selection-start-column="5" selection-end-line="2659" selection-end-column="5" />
               <folding>
-                <element signature="e#153#154#0" expanded="true" />
-                <element signature="e#179#180#0" expanded="true" />
+                <element signature="e#108795#108796#0" expanded="true" />
+                <element signature="e#108838#108839#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="424">
+              <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+              <folding>
+                <element signature="e#371#372#0" expanded="true" />
+                <element signature="e#392#393#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,7 +139,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/Util/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="132">
@@ -166,11 +180,12 @@
         <option value="$PROJECT_DIR$/src/Main/ApplicationRoot.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Main/Game/TextPane/TextPane.java" />
-        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java" />
         <option value="$PROJECT_DIR$/src/Main/Game/ApplicationPane.java" />
-        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java" />
-        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java" />
         <option value="$PROJECT_DIR$/src/Main/Util/Constants.java" />
+        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java" />
+        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/Character.java" />
+        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java" />
+        <option value="$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java" />
       </list>
     </option>
   </component>
@@ -625,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514905059885</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Scale visuals">
+      <created>1514905503073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1514905503073</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -717,7 +739,8 @@
     <MESSAGE value="Pane separation" />
     <MESSAGE value="VisualPane 0.1" />
     <MESSAGE value="VisualPane 2.0 + merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="VisualPane 2.0 + merge" />
+    <MESSAGE value="Scale visuals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scale visuals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -869,16 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="61" lean-forward="false" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Game/ApplicationPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -889,13 +902,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java">
+    <entry file="file://$PROJECT_DIR$/src/Main/Util/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="132">
+          <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
           <folding>
-            <element signature="e#153#154#0" expanded="true" />
-            <element signature="e#179#180#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -910,20 +922,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/Characters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/VisualPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <caret line="26" column="84" lean-forward="false" selection-start-line="26" selection-start-column="84" selection-end-line="26" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Util/Constants.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/canvas/GraphicsContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        <state relative-caret-position="232">
+          <caret line="2659" column="5" lean-forward="true" selection-start-line="2659" selection-start-column="5" selection-end-line="2659" selection-end-column="5" />
+          <folding>
+            <element signature="e#108795#108796#0" expanded="true" />
+            <element signature="e#108838#108839#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Game/VisualPane/UpdateHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -14,11 +14,16 @@ import javafx.scene.paint.Color;
 public class VisualPane extends Pane {
 
   private GraphicsContext context;
+  private UpdateHandler updateHandler;
 
   public VisualPane(Canvas canvas){
     context = canvas.getGraphicsContext2D();
     //context.drawImage(new Image(getClass().getResourceAsStream("testbackground.png")), 0, 0);
     //context.drawImage(new Image(getClass().getResourceAsStream("test.png")), 0, 0);
-    UpdateHandler updateHandler = new UpdateHandler(context);
+    updateHandler = new UpdateHandler(context);
+  }
+
+  public void setBackground(String path){
+    updateHandler.draw(new Image((getClass().getResourceAsStream("test.png"))), 0, 0);
   }
 }

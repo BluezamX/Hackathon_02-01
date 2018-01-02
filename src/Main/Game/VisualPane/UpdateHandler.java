@@ -20,8 +20,6 @@ public class UpdateHandler {
   }
 
   public void draw(Image image, int x, int y){
-    System.out.println(Constants.widthScale);
-    System.out.println(Constants.heightScale);
-    context.drawImage(image, (int) x / Constants.widthScale, (int) y / Constants.heightScale);
+    context.drawImage(image, x, y, image.getWidth() * Constants.widthScale, image.getHeight() * Constants.heightScale);
   }
 }
