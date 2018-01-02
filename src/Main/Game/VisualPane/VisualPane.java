@@ -13,16 +13,12 @@ import javafx.scene.paint.Color;
  */
 public class VisualPane extends Pane {
 
-  GraphicsContext context;
-  Image image;
+  private GraphicsContext context;
 
   public VisualPane(Canvas canvas){
-    setMaxHeight(Constants.height * 2 / 3);
-    setMaxHeight(Constants.height * 2 / 3);
-    setMinWidth(Constants.width);
-    setMaxWidth(Constants.width);
     context = canvas.getGraphicsContext2D();
-    System.out.println("kek");
-    context.drawImage(new Image(getClass().getResourceAsStream("test.png")), 0, 0);
+    //context.drawImage(new Image(getClass().getResourceAsStream("testbackground.png")), 0, 0);
+    //context.drawImage(new Image(getClass().getResourceAsStream("test.png")), 0, 0);
+    UpdateHandler updateHandler = new UpdateHandler(context);
   }
 }
