@@ -12,8 +12,8 @@ import javafx.scene.text.Text;
  */
 public class TextPane extends Pane {
 
+  TextArea area = new TextArea();
   public TextPane(){
-    TextArea area = new TextArea();
     area.setStyle("-fx-font-size: 3em;");
     area.setEditable(false);
     area.setText("No Reception!\n" +
@@ -22,5 +22,13 @@ public class TextPane extends Pane {
     area.setMinWidth(Constants.width);
     area.setMinHeight(Constants.height / 3);
     getChildren().add(area);
+  }
+
+  public void print(String text){
+    area.setText(text);
+  }
+
+  public void append(String text){
+    area.setText(area.getText() + text);
   }
 }

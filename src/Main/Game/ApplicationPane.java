@@ -26,6 +26,7 @@ class ApplicationPane extends Pane {
   private String foreground;
   private int walkCounter = 1;
   private boolean flip = false;
+  private boolean reverse = false;
 
   ApplicationPane(){
     initialize();
@@ -37,16 +38,25 @@ class ApplicationPane extends Pane {
     setOnKeyPressed(event -> {
       switch (event.getCode()) {
         case UP:
-          System.out.println("jaa");
+          System.out.println(walkCounter);
           player.addX(20);
           visualPane.drawBackground(background);
           for(int i = 0; i < characters.size(); i++){
             characters.get(i).draw();
           }
           visualPane.drawPath("Lopen F" + walkCounter + ".png", player.x, player.y);
-          walkCounter++;
+          System.out.println(reverse);
+          if(reverse){
+            walkCounter--;
+          } else {
+            walkCounter++;
+          }
           if(walkCounter > 5){
-            walkCounter = 1;
+            this.reverse = true;
+            walkCounter--;
+          } else if (walkCounter < 1) {
+            this.reverse = false;
+            walkCounter++;
           }
           flip = false;
           //visualPane.drawBackground(foreground);
@@ -72,7 +82,7 @@ class ApplicationPane extends Pane {
               System.out.println("Dit wordt redelijk hard geprint.");
               for (Character character : characters) {
                   if (character.x < player.x + player.image.getWidth() && player.x < character.x + character.image.getWidth()){
-                    System.out.println(character.speak());
+                    textPane.print(character.speak());
                   }
               }
               break;
@@ -85,7 +95,7 @@ class ApplicationPane extends Pane {
     });
 
     this.setOnKeyReleased (event -> {
-
+      reverse = false;
       visualPane.drawBackground(background);
       for(int i = 0; i < characters.size(); i++){
         characters.get(i).draw();
@@ -113,7 +123,10 @@ class ApplicationPane extends Pane {
 
   private void setLevels(){
     ArrayList<Character> tempchars = new ArrayList<>();
-    tempchars.add(new Character("test.png", visualPane, 1000, 200));
+    ArrayList<String> text = new ArrayList<>();
+    text.add("Yvan is een goede programmeur.");
+    text.add("PRANKED");
+    tempchars.add(new Character("test.png", visualPane, text, 1000, 200));
     levels.add(new Level("testbackground1.png", "testforeground.png", "cane", tempchars));
   }
 
@@ -128,7 +141,7 @@ class ApplicationPane extends Pane {
     background = "testbackground1.png";
     foreground = "testforeground.png";
 
-    Canvas canvas = new Canvas(Constants.width, (Constants.height * 6 / 8));
+    Canvas canvas = new Canvas(Constants.width, (Constants.height * 2 / 3) / Constants.heightScale);
     this.visualPane = new VisualPane(canvas);
     this.textPane = new TextPane();
     BorderPane root = new BorderPane();
@@ -136,6 +149,6 @@ class ApplicationPane extends Pane {
     root.setBottom(textPane);
     getChildren().add(root);
 
-    player = new Character("Staand.png", visualPane, 50, 400);
+    player = new Character("Staand.png", visualPane, null, 50, 300);
   }
 }

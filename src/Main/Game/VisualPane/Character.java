@@ -2,6 +2,8 @@ package Main.Game.VisualPane;
 
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+
 /**
  * Created by jaspe on 02/01/2018.
  *
@@ -12,17 +14,21 @@ public class Character {
   private VisualPane pane;
   public int x;
   public int y;
+  private ArrayList<String> text = new ArrayList<>();
+  private int printCounter = 0;
 
-  public Character(String path, VisualPane pane){
+  public Character(String path, VisualPane pane, ArrayList<String> text){
     image =  new Image((getClass().getResourceAsStream(path)));
     this.pane = pane;
+    this.text = text;
     this.x = 0;
     this.y = 400;
   }
 
-  public Character(String path, VisualPane pane, int x , int y){
+  public Character(String path, VisualPane pane, ArrayList<String> text, int x , int y){
     image =  new Image((getClass().getResourceAsStream(path)));
     this.pane = pane;
+    this.text = text;
     this.x = x;
     this.y = y;
   }
@@ -35,17 +41,11 @@ public class Character {
     pane.drawImage(image, x, y);
   }
 
-  public boolean checkSpeakable(double x , double y){
-    if(image.getWidth() + this.x > x  && x > this.x ){
-        System.out.println("Je moeder");
-        return true;
-    }
-      System.out.println("sad");
-   return false;
-  }
-
   public String speak(){
-    return "Hallo Yvan";
+    if (printCounter >= text.size()) printCounter = text.size() - 1;
+    String tempString = text.get(printCounter);
+    printCounter++;
+    return tempString;
   }
 
 }
