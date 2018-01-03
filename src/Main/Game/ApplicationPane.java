@@ -19,6 +19,7 @@ import java.util.*;
  * Created by jaspe on 02/01/2018.
  *
  */
+
 class ApplicationPane extends Pane {
 
   // Panes
@@ -101,8 +102,8 @@ class ApplicationPane extends Pane {
 
             player.addX(-20);
             visualPane.drawBackground(background);
-            for (int i = 0; i < characters.size(); i++) {
-              characters.get(i).draw();
+            for (Character character1 : characters) {
+              character1.draw();
             }
             visualPane.drawFlip("Lopen F" + walkCounter + ".png", player.x, player.y);
             if (reverse) {
@@ -145,8 +146,8 @@ class ApplicationPane extends Pane {
     this.setOnKeyReleased (event -> {
       reverse = false;
       visualPane.drawBackground(background);
-      for(int i = 0; i < characters.size(); i++){
-        characters.get(i).draw();
+      for (Character character : characters) {
+        character.draw();
       }
       if (flip){
         visualPane.drawFlip("Staand.png", player.x, player.y);
@@ -200,12 +201,12 @@ class ApplicationPane extends Pane {
     player = new Character("Staand.png", visualPane, null, 50, 300);
   }
 
-  public void levelnext () {
+  private void levelnext () {
       loadLevel(levelnummer);
       player.draw();
   }
 
-  void witchEntrance() {
+  private void witchEntrance() {
     holdGame = true;
     Timeline timeline = new Timeline(
       new KeyFrame(
