@@ -19,7 +19,7 @@ public class TextPane extends Pane {
     area.setText("No Reception!\n" +
         "By Jasper Wijnhoven, Yvan Bibollet-Ruche, Caia Leithuijser and Nicky van Oort.");
     area.setWrapText(true);
-    area.setMinWidth(Constants.width);
+    area.setMinWidth(Constants.width /  3 * 2);
     area.setMinHeight(Constants.height / 3);
     getChildren().add(area);
   }
