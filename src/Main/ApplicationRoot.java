@@ -20,7 +20,6 @@ public class ApplicationRoot extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     resolution = Screen.getPrimary().getVisualBounds();
-
     configure(stage);
   }
 
@@ -30,7 +29,7 @@ public class ApplicationRoot extends Application {
 
     scene = new ApplicationScene();
 
-    stage.setTitle("Hackathon Project Name");
+    stage.setTitle("No Reception");
     stage.setScene(scene);
 
     stage.show();

@@ -1,9 +1,14 @@
 package Main.Game.TextPane;
 
 import Main.Util.Constants;
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 
 /**
@@ -13,6 +18,10 @@ import javafx.scene.text.Text;
 public class TextPane extends Pane {
 
   TextArea area = new TextArea();
+  int number = 0;
+  String text = "";
+  boolean acceptsText = true;
+
   public TextPane(){
     area.setStyle("-fx-font-size: 3em;");
     area.setEditable(false);
@@ -24,11 +33,30 @@ public class TextPane extends Pane {
     getChildren().add(area);
   }
 
-  public void print(String text){
-    area.setText(text);
-  }
+//  public void print(String text){
+//    area.setText(text);
+//  }
 
-  public void append(String text){
-    area.setText(area.getText() + text);
+  public void print(String text, int speed){
+    if (!acceptsText){
+      System.out.println("Stopped.");
+      return;
+    }
+    area.clear();
+    final IntegerProperty getal = new SimpleIntegerProperty(0);
+    Timeline timeline = new Timeline(
+      new KeyFrame(
+        Duration.millis(speed),
+        event -> {
+          acceptsText = false;
+          String temp = Character.toString(text.charAt(getal.getValue()));
+          area.setText(area.getText() + temp);
+          getal.set(getal.get() + 1);
+          if (getal.get() == text.length()) acceptsText = true;
+        }
+      )
+    );
+    timeline.setCycleCount(text.length());
+    timeline.play();
   }
 }
