@@ -128,11 +128,12 @@ public class GameBox extends VBox{
             for (Character character : characters) {
               if (character.x < player.x + player.image.getWidth() * 3 / 4 && player.x < character.x + character.image.getWidth() * 3 / 4) {
                 printed = true;
-                String string = character.speak();
+
+                String string = character.speak(player.inventory);
                 if("PLAY".equals(string.substring(0,4))){
                   playvideo(character, string.substring(5, string.length() - 1));
                 } else {
-                  textPane.print(character.speak(), textspeed);
+                  textPane.print(string , textspeed);
                 }
                 break;
               }

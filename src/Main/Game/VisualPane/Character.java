@@ -19,6 +19,9 @@ public class Character {
   public String Antwoordja;
   public String Antwoordnee;
   public boolean Beantwoord;
+  public ArrayList<String> inventory = new ArrayList<>();
+  public String need;
+  public String Bendankbericht;
 
   public Character(String path, VisualPane pane, ArrayList<String> text){
     image =  new Image((getClass().getResourceAsStream(path)));
@@ -56,7 +59,13 @@ public class Character {
     pane.drawImage(image, x, y);
   }
 
-  public String speak(){
+  public String speak(ArrayList list){
+    for (int i = 0; i < list.size(); i++) {
+      if(list.get(i) == need ){
+        return Bendankbericht;
+      }
+    }
+
     if (printCounter >= text.size()) printCounter = text.size() - 1;
     String tempString = text.get(printCounter);
     printCounter++;
@@ -77,12 +86,30 @@ public class Character {
   }
 
 
+
+
   public void setAntwoordja(String antwoordja) {
     Antwoordja = antwoordja;
   }
 
   public void setAntwoordnee(String antwoordnee) {
     Antwoordnee = antwoordnee;
+  }
+
+  public void addtoinventory(String voorwerp){
+    inventory.add(voorwerp);
+  }
+
+  public String getneed(){
+    return need;
+  }
+
+  public void addNeed(String need){
+    this.need =  need;
+  }
+
+  public void addBericht(String zin){
+    Bendankbericht = zin;
   }
 
 }
