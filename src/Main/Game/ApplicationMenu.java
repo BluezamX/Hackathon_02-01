@@ -14,6 +14,5 @@ class ApplicationMenu extends Pane {
     root.setTop(button1);
     root.setBottom(button2);
     getChildren().add(root);
-
   }
 }

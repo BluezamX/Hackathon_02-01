@@ -1,7 +1,6 @@
 package Main.Game;
 
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -10,33 +9,37 @@ import javafx.scene.layout.Pane;
  */
 class MainPane extends Pane {
 
-  ApplicationPane applicationPane;
-  ApplicationMenu menu;
+  private GameBox gameBox;
+  private OptionBox optionBox;
+  private MenuBox menuBox;
 
-  Button startknop = new Button("Start");
-  Button optieknop = new Button("Opties");
+  private Button startknop = new Button("Start");
+  private Button optieknop = new Button("Opties");
 
   MainPane(){
-    startknop.addEventHandler(MouseEvent.MOUSE_CLICKED,
+    gameBox = new GameBox();
+    optionBox = new OptionBox();
+    startknop.setOnAction(
         e -> {
-          application();
+          getChildren().clear();
+          getChildren().add(gameBox);
         });
-    optieknop.addEventHandler(MouseEvent.MOUSE_CLICKED,
+    optieknop.setOnAction(
         e -> {
-          application();
+          getChildren().clear();
+          getChildren().add(optionBox);
         });
-    applicationPane = new ApplicationPane();
-    menu = new ApplicationMenu(startknop, optieknop);
-    getChildren().add(menu);
+    menuBox = new MenuBox(startknop, optieknop);
+    getChildren().add(menuBox);
   }
 
   private void application(){
     getChildren().clear();
-    getChildren().add(applicationPane);
+    getChildren().add(gameBox);
   }
 
   private void menu(){
     getChildren().clear();
-    getChildren().add(menu);
+    getChildren().add(menuBox);
   }
 }

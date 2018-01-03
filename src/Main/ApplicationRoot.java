@@ -30,6 +30,7 @@ public class ApplicationRoot extends Application {
     scene = new ApplicationScene();
 
     stage.setTitle("No Reception");
+    stage.setFullScreenExitHint("");
     stage.setScene(scene);
 
     stage.show();

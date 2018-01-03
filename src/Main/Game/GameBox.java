@@ -1,30 +1,28 @@
 package Main.Game;
 
-import Main.Game.OptionPane.OptionPane;
 import Main.Game.TextPane.TextPane;
+import Main.Game.VisualPane.Character;
 import Main.Game.VisualPane.Level;
 import Main.Game.VisualPane.VisualPane;
+import Main.Util.Constants;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.scene.layout.BorderPane;
-import Main.Util.Constants;
-import Main.Game.VisualPane.Character;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
- * Created by jaspe on 02/01/2018.
+ * Created by jaspe on 03/01/2018.
  *
  */
-
-class ApplicationPane extends Pane {
+public class GameBox extends VBox{
 
   // Panes
   private VisualPane visualPane;
@@ -45,9 +43,6 @@ class ApplicationPane extends Pane {
   private boolean flip = false;
   private boolean reverse = false;
 
-  // Audio
-  private int volume;
-
   // Gameflow
   private boolean printed = false;
   private boolean holdGame = false;
@@ -55,7 +50,7 @@ class ApplicationPane extends Pane {
   private int counter = -500;
   private boolean Heks = true;
 
-  ApplicationPane(){
+  GameBox(){
     initialize();
     setLevels();
     setCharacters(0);
@@ -63,15 +58,6 @@ class ApplicationPane extends Pane {
     player.draw();
 
     setOnKeyPressed(event -> {
-      switch (event.getCode()) {
-        case EQUALS:
-          if (volume < 10) volume++;
-          break;
-
-        case MINUS:
-          if (volume > 0) volume--;
-          break;
-      }
       if(!holdGame) {
         switch (event.getCode()) {
           case RIGHT:
@@ -194,10 +180,8 @@ class ApplicationPane extends Pane {
     ArrayList<String> text = new ArrayList<>();
     text.add("PLAY test.mp4.");
     text.add("PRANKED");
-    String nee= "Ik vind hem anders heel goed jasper daarintegen kan niks";
-    String ja = "Mee eens Jasper daarintegen...";
     tempchars.add(new Character("Langsvliegheks.png", visualPane, text, -500, 0));
-    tempchars.add(new Character("test.png", visualPane, text, 1000, 0, ja , nee));
+    tempchars.add(new Character("test.png", visualPane, text, 1000, 0));
     //Level2.add(new Character("Langsvliegheks.png", visualPane, text, 0, 0));
     levels.add(new Level("background.png", "testforeground.png", "cane", tempchars));
     levels.add(new Level("kerkhof.png", "testforeground.png", "cane", Level2));
@@ -222,56 +206,34 @@ class ApplicationPane extends Pane {
     root.setBottom(textPane);
     getChildren().add(root);
 
-    volume = 8;
     player = new Character("Staand.png", visualPane, null, 50, 300);
   }
 
   private void levelnext () {
-      loadLevel(levelnummer);
-      player.draw();
+    loadLevel(levelnummer);
+    player.draw();
   }
 
   private void witchEntrance() {
     holdGame = true;
     Timeline timeline = new Timeline(
-      new KeyFrame(
-        Duration.millis(30),
-        event -> {
-          counter += 25;
-          visualPane.drawBackground(background);
-          for (int i = 1; i < characters.size(); i++) {
-            characters.get(i).draw();
-          }
-          visualPane.drawPath("Staand" + ".png", player.x, player.y);
-          characters.get(0).y = characters.get(0).y - 2;
-          visualPane.drawImage(characters.get(0).image, counter, characters.get(0).y);
-          if (counter >= 2000) holdGame = false;
-        }
-      )
+        new KeyFrame(
+            Duration.millis(30),
+            event -> {
+              counter += 25;
+              visualPane.drawBackground(background);
+              for (int i = 1; i < characters.size(); i++) {
+                characters.get(i).draw();
+              }
+              visualPane.drawPath("Staand" + ".png", player.x, player.y);
+              characters.get(0).y = characters.get(0).y - 2;
+              visualPane.drawImage(characters.get(0).image, counter, characters.get(0).y);
+              if (counter >= 2000) holdGame = false;
+            }
+        )
     );
     timeline.setCycleCount(100);
     timeline.play();
-  }
-
-  public void praat(boolean jaofnee) {
-    for (Character character : characters) {
-
-      if (character.x < player.x + player.image.getWidth() * 3 / 4 && player.x < character.x + character.image.getWidth() * 3 / 4) {
-        printed = true;
-        if(character.speak(jaofnee) != null) {
-          textPane.print(character.speak(jaofnee), textspeed);
-          break;
-        }
-        textPane.print("Ik heb daar geen antwoord op" , textspeed);
-        break;
-      }
-    }
-
-    if(!printed){
-      textPane.print("Waarom praat je tegen jezelf?" , textspeed);
-
-    }
-    printed = false;
   }
 
   private void playvideo(Character character, String path){
@@ -288,4 +250,5 @@ class ApplicationPane extends Pane {
     mediaView.setFitHeight(Constants.height / Constants.heightScale);
     getChildren().add(mediaView);
   }
+
 }

@@ -4,6 +4,7 @@ import Main.Util.Constants;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
@@ -13,13 +14,14 @@ import javafx.scene.layout.Pane;
 public class VisualPane extends Pane {
 
   private GraphicsContext context;
-  private UpdateHandler updateHandler;
+  private ImageView imageView;
 
   public VisualPane(Canvas canvas){
+    imageView = new ImageView();
     context = canvas.getGraphicsContext2D();
     //context.drawImage(new Image(getClass().getResourceAsStream("testbackground.png")), 0, 0);
     //context.drawImage(new Image(getClass().getResourceAsStream("test.png")), 0, 0);
-    drawBackground("testbackground1.png");
+    drawBackground("background.png");
     //drawImage("test.png", 512, 256);
   }
 
